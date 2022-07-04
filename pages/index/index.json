@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "c-tab-bar": "/components/tab-bar/index",
+    "i-modal": "/components/iViewUI/modal/index"
+  },
+  "navigationBarTitleText": "苏杭意见箱"
+}

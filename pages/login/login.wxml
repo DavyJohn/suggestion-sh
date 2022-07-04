@@ -1,0 +1,1 @@
+<button bindtap="getUserProfile">快速登录</button>

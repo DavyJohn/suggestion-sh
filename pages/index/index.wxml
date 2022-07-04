@@ -1,0 +1,56 @@
+<view class="container">
+  <view class="header">
+    <image src="/images/main.png"></image>
+  </view>
+  <view class="subcontainer">
+    <view class="title">
+      <text class="register-text">苏杭意见表</text>
+    </view>
+    <text class="tip-info">欢迎你反映问题并提出建议。我们会将大家意见统一收集，有责改进，无则加勉！感谢你的支持和参与。</text>
+    <form bindsubmit="submit">
+    <view class="form-item">
+      <view class="cell-label">
+        <text class="seq">1.</text>
+        <text class="question">姓名(可选)：</text>
+      </view>
+      <view>
+        <input name="nickName" placeholder="请输入姓名"></input>
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="cell-label">
+        <text class="seq">2.</text>
+        <text class="question">意见：</text>
+        <text class="asterisk">*</text>
+      </view>
+      <view>
+        <textarea name="description" placeholder="提出意见，最多500字" maxlength="500" />
+      </view>
+    </view>
+    <view class="form-item">
+      <view class="cell-label">
+        <text class="seq">3.</text>
+        <text class="question">上传附件(可选)：</text>
+      </view>
+      <view class="picture_list">
+        <view wx:for="{{files}}" class="picture-item" wx:key="index">
+          <image src="{{item.tempFilePath}}" mode="aspectFill" bindtap="previewImg"></image>
+          <text class='del' bindtap='deleteFile' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
+        </view>
+        <view class='picture-item'>
+          <view class="add-image" bindtap='chooseFile'>
+            <text>+</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="form-item">
+      <button formType="submit" class="btn-submit">提交</button>
+    </view>
+  </form>
+  </view>
+  
+</view>
+
+<!--标签栏-->
+<c-tab-bar current="homepage"></c-tab-bar>

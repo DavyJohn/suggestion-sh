@@ -1,0 +1,18 @@
+<view class="container">
+    <image class="header-bg" src="/images/main.png"></image>
+    <view class="personal">
+        <image class="userinfo-avatar" src="{{avatarUrl}}"></image>
+        <text class="userinfo-nickname" bindtap="getUserProfile">{{nickName}}</text>
+    </view>
+    <view class="suggestions">
+        <text class="title">我的建议</text>
+        <view wx:for="{{suggestions}}" class="suggestion-item" wx:key="index">
+            <text class="nickName">{{item.nickName ? item.nickName : '匿名'}}</text>
+            <text class="description">{{item.description}}</text>
+            <text class="time">{{item.createTime}}</text>
+        </view>
+    </view>
+</view>
+
+<!--标签栏-->
+<c-tab-bar current="mine"></c-tab-bar>

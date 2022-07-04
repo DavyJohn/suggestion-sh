@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "c-tab-bar": "/components/tab-bar/index"
+  },
+  "navigationBarTitleText": "个人中心"
+}

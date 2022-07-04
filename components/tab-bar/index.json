@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-tab-bar": "/components/iViewUI/tab-bar/index",
+    "i-tab-bar-item": "/components/iViewUI/tab-bar-item/index"
+  }
+}
