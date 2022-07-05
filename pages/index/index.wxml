@@ -1,17 +1,17 @@
 <view class="container">
   <view class="header">
-    <image src="/images/main.png"></image>
+    <image src="/images/main.jpeg"></image>
   </view>
   <view class="subcontainer">
     <view class="title">
       <text class="register-text">苏杭意见表</text>
     </view>
-    <text class="tip-info">欢迎你反映问题并提出建议。我们会将大家意见统一收集，有责改进，无则加勉！感谢你的支持和参与。</text>
+    <text class="tip-info">{{indexTitle}}</text>
     <form bindsubmit="submit">
     <view class="form-item">
       <view class="cell-label">
         <text class="seq">1.</text>
-        <text class="question">姓名(可选)：</text>
+        <text class="question">姓名(匿名提交时请勿填写)：</text>
       </view>
       <view>
         <input name="nickName" placeholder="请输入姓名"></input>

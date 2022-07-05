@@ -1,5 +1,5 @@
 <view class="container">
-    <image class="header-bg" src="/images/main.png"></image>
+    <image class="header-bg" src="/images/mine.png"></image>
     <view class="personal">
         <image class="userinfo-avatar" src="{{avatarUrl}}"></image>
         <text class="userinfo-nickname" bindtap="getUserProfile">{{nickName}}</text>

@@ -1,1 +1,5 @@
-<button bindtap="getUserProfile">快速登录</button>
+<view>
+  <image src="/images/login-top.png"></image>
+  <image class="login-log" src="/images/login-log.png"></image>
+  <button bindtap="getUserProfile">快速登录</button>
+</view>

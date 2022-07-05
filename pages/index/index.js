@@ -9,9 +9,12 @@ Page({
     authDialogVisible: true, // 是否显示授权弹框
     localFilePaths: [],
     serverFilePaths: [],
-    files: [] // 即将上传的文件列表
+    files: [], // 即将上传的文件列表
+    indexTitle:[] 
   },
   onLoad() {
+    let that= this
+
     // 判断用户是否授权，未授权时，向用户申请授权
     wx.getSetting({
       success: (res) => {
@@ -31,7 +34,27 @@ Page({
           })
         }
       }
+    }),
+    wx.request({
+      url: 'http://localhost:8000/api/dict',
+      method:'GET',
+      data:{
+        page:0,
+        size:10,
+        sort:'id,desc',
+        blurry:'suggestion_tip'
+      },
+      header:{
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data.content[0].description)
+        that.setData({
+          indexTitle : res.data.content[0].description
+        })
+      }
     })
+
   },
 
   /**
