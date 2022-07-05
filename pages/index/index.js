@@ -1,5 +1,4 @@
 const app = getApp()
-
 Page({
 
   /**
@@ -10,7 +9,12 @@ Page({
     localFilePaths: [],
     serverFilePaths: [],
     files: [], // 即将上传的文件列表
-    indexTitle:[] 
+    indexTitle:[] ,
+    indicatorDots: false,
+    vertical: false,
+    autoplay: false,
+    interval: 2000,
+    duration: 500
   },
   onLoad() {
     let that= this
@@ -52,6 +56,9 @@ Page({
         that.setData({
           indexTitle : res.data.content[0].description
         })
+      },
+      fail:function(error){
+        console.log(error)
       }
     })
 
