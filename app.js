@@ -12,8 +12,8 @@ App({
           wx.request({
             url: 'https://api.weixin.qq.com/sns/jscode2session',
             data: {
-              appid: 'wxb35321edd30d9cc2',
-              secret: 'eae0e294ada81e82da0ebc58bded0e1e',
+              appid: 'wx11ca4869e1818b99',
+              secret: '66e180e158e0586b0cd7d4b5bc167c3e',
               js_code: res.code,
               grant_type: 'authorization_code'
             },
@@ -22,6 +22,7 @@ App({
               'content-type': 'application/json'
             },
             success: function (res) {
+              console.log(res)
               wx.setStorageSync('openid', res.data.openid)
               wx.setStorageSync('session_key', res.data.session_key)
             }

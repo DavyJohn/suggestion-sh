@@ -1,6 +1,16 @@
-<view class="container">
+<view class="container"> 
+<!-- 轮播图 -->
+  <view class="index-swiper">
+    <swiper indicator-dots="{{indicatorDots}}"
+          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <swiper-item>
+                <image class="swiper-image" src="/images/main.jpeg"></image>
+            </swiper-item>
+    </swiper>
+  </view>
+ 
   <view class="header">
-    <image src="/images/main.jpeg"></image>
+    <image class="index-image" src="/images/main.jpeg"></image>
   </view>
   <view class="subcontainer">
     <view class="title">
