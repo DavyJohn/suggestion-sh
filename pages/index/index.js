@@ -25,12 +25,14 @@ Page({
             confirmText: '同意',
             cancelText: '拒绝',
             success (res) {
+              console.log(res)
               if (res.confirm) {
                 wx.redirectTo({
                   url: '/pages/login/login'
                 })
               }
             }
+            
           })
         }
       }
