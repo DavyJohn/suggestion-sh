@@ -14,7 +14,8 @@ Page({
     vertical: false,
     autoplay: false,
     interval: 2000,
-    duration: 500
+    duration: 500,
+    // nickName:''
   },
   onLoad() {
     let that= this
@@ -22,7 +23,11 @@ Page({
     // 判断用户是否授权，未授权时，向用户申请授权
     wx.getSetting({
       success: (res) => {
-        if (!res.authSetting['scope.userInfo']) {
+        let nickName =  wx.getStorageSync('nickName')
+         //如果没有授权以及本地缓存没有用户信息
+        if (!res.authSetting['scope.userInfo'] || !nickName ) {  
+          //选择跳转到登陆界面
+          console.log('选择跳转到登陆界面')
           wx.showModal({
             title: '欢迎使用意见箱',
             content: '用户您好，为了保证您意见数据的安全性，需要您授权登录才能使用核心功能。',

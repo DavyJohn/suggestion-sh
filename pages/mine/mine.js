@@ -31,6 +31,8 @@ Page({
             }
         })
 
+        
+
         // 获取建议列表
         let openid = wx.getStorageSync('openid')
         let that = this

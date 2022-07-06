@@ -27,6 +27,11 @@ Page({
             key: 'avatarUrl',
             data: res.userInfo.avatarUrl
           })
+
+          //关闭当前页面或者跳转到index
+          wx.redirectTo({
+            url: '../index/index',
+          })
         }
       })
     }
