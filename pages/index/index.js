@@ -18,17 +18,9 @@ Page({
     
     // nickName:''
   },
+  //首次进入页面加载时触发
   onLoad() {
-    let that= this
-    
-    wx.getStorage({
-      key:'indexTitle',
-      success:(res) =>{
-        that.setData({
-          indexTitle:res.data
-        })
-      }
-    }),
+    console.log('首次进入页面加载时触发')
     
     // 判断用户是否授权，未授权时，向用户申请授权
     wx.getSetting({
@@ -54,44 +46,33 @@ Page({
           })
         }
       }
-    }),
-    //如果 indexTitle 为'' 则获取index一段话
-    // if (that.data.indexTitle == '') {
-      wx.request({ 
-        url: app.globalData.baseUrl+'/api/dict',
-        method:'GET',
-        data:{
-          page:0,
-          size:10,
-          sort:'id,desc',
-          blurry:'suggestion_tip'
-        },
-        header:{
-          'content-type': 'application/json'
-        },
-        success: (res) => {
-          console.log("获取一段话数据")
-          that.setData({
-            indexTitle : res.data.content[0].description
-          }),
-          console.log( that.data.indexTitle)
-           //将输入加入本地缓存中
-           
-          wx.setStorage({
-            key:'indexTitle',
-            data:that.data.indexTitle
-          })
-  
-        },
-        fail:function(error){
-          console.log(error)
-        }
-      })
-    // }
-    
+    })
+  },
+  onShow(){
+    let that= this
+    let title= wx.getStorageSync('indexTitle')
+      //接收本地缓存的title 同步
+      if(!title){
+        console.log('无本地数据')
+        this.getIndexTitle(that)
+      }else{
+        console.log('有本地数据数据')
+        that.setData({
+          indexTitle : title
+        })
+        
+      }
+    //接收本地缓存的title 异步
+    // wx.getStorage({
+    //   key:'indexTitle',
+    //   success:(res) =>{
+    //     that.setData({
+    //       indexTitle:res.data
+    //     })
+    //   }
+    // }),
 
   },
-
   /**
    * 选择文件
    */
@@ -115,7 +96,39 @@ Page({
       }
     })
   },
-  
+  /**
+   * 获取title
+   */
+  getIndexTitle :function(that){
+    wx.request({ 
+      url: app.globalData.baseUrl+'/api/dict',
+      method:'GET',
+      data:{
+        page:0,
+        size:10,
+        sort:'id,desc',
+        blurry:'suggestion_tip'
+      },
+      header:{
+        'content-type': 'application/json'
+      },
+      success: (res) => {
+        console.log("获取title")
+        that.setData({
+          indexTitle : res.data.content[0].description
+        }),
+                 //将输入加入本地缓存中
+        wx.setStorage({
+          key:'indexTitle',
+          data:that.data.indexTitle
+        })
+
+      },
+      fail:function(error){
+        console.log(error)
+      }
+    })
+  },
   /**
    * 上传文件
    */
