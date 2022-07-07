@@ -9,7 +9,6 @@ App({
     // 登录
     wx.login({
         success: (res) => {
-          console.log('触发')
           wx.request({
             url: 'https://api.weixin.qq.com/sns/jscode2session',
             data: {

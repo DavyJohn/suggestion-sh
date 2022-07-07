@@ -20,7 +20,16 @@ Page({
   },
   onLoad() {
     let that= this
-
+    
+    wx.getStorage({
+      key:'indexTitle',
+      success:(res) =>{
+        that.setData({
+          indexTitle:res.data
+        })
+      }
+    }),
+    
     // 判断用户是否授权，未授权时，向用户申请授权
     wx.getSetting({
       success: (res) => {
@@ -28,7 +37,6 @@ Page({
          //如果没有授权以及本地缓存没有用户信息
         if (!res.authSetting['scope.userInfo'] || !nickName ) {  
           //选择跳转到登陆界面
-          console.log('选择跳转到登陆界面')
           wx.showModal({
             title: '欢迎使用意见箱',
             content: '用户您好，为了保证您意见数据的安全性，需要您授权登录才能使用核心功能。',
@@ -47,28 +55,40 @@ Page({
         }
       }
     }),
-    wx.request({ 
-      url: app.globalData.baseUrl+'/api/dict',
-      method:'GET',
-      data:{
-        page:0,
-        size:10,
-        sort:'id,desc',
-        blurry:'suggestion_tip'
-      },
-      header:{
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res.data.content[0].description)
-        that.setData({
-          indexTitle : res.data.content[0].description
-        })
-      },
-      fail:function(error){
-        console.log(error)
-      }
-    })
+    //如果 indexTitle 为'' 则获取index一段话
+    // if (that.data.indexTitle == '') {
+      wx.request({ 
+        url: app.globalData.baseUrl+'/api/dict',
+        method:'GET',
+        data:{
+          page:0,
+          size:10,
+          sort:'id,desc',
+          blurry:'suggestion_tip'
+        },
+        header:{
+          'content-type': 'application/json'
+        },
+        success: (res) => {
+          console.log("获取一段话数据")
+          that.setData({
+            indexTitle : res.data.content[0].description
+          }),
+          console.log( that.data.indexTitle)
+           //将输入加入本地缓存中
+           
+          wx.setStorage({
+            key:'indexTitle',
+            data:that.data.indexTitle
+          })
+  
+        },
+        fail:function(error){
+          console.log(error)
+        }
+      })
+    // }
+    
 
   },
 
