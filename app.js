@@ -9,6 +9,7 @@ App({
     // 登录
     wx.login({
         success: (res) => {
+          console.log('触发')
           wx.request({
             url: 'https://api.weixin.qq.com/sns/jscode2session',
             data: {
@@ -31,6 +32,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    baseUrl:'https://31p4663h68.oicp.vip'
+    // baseUrl:'http://127.0.0.1:8000'
   }
 })

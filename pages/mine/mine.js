@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
     /**
@@ -37,7 +38,7 @@ Page({
         let openid = wx.getStorageSync('openid')
         let that = this
         wx.request({
-            url: 'http://localhost:8000/api/suggestions/someuser',
+            url: app.globalData.baseUrl+'/api/suggestions/someuser',
             data: {
                 openid: openid
             },

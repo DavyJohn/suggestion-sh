@@ -15,6 +15,7 @@ Page({
     autoplay: false,
     interval: 2000,
     duration: 500,
+    
     // nickName:''
   },
   onLoad() {
@@ -46,8 +47,8 @@ Page({
         }
       }
     }),
-    wx.request({
-      url: 'http://localhost:8000/api/dict',
+    wx.request({ 
+      url: app.globalData.baseUrl+'/api/dict',
       method:'GET',
       data:{
         page:0,
@@ -102,7 +103,7 @@ Page({
     let that = this
     return new Promise((resolve, reject) => {
       wx.uploadFile({
-        url: 'http://localhost:8000/api/suggestions/file',
+        url: app.globalData.baseUrl+'/api/suggestions/file',
         filePath: filePath,    
         name: 'file',   
         success: (res) => {
@@ -172,7 +173,7 @@ Page({
     formData['openid'] = wx.getStorageSync('openid')
     formData['files'] = this.data.serverFilePaths
     wx.request({
-      url: 'http://localhost:8000/api/suggestions',
+      url: app.globalData.baseUrl+'/api/suggestions',
       method: 'POST',
       data: formData,
       success: (res) => {
