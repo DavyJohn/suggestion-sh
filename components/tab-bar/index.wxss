@@ -1,1 +1,4 @@
 /* components/tab-bar/index.wxss */
+.i-tab-bar{
+  height:130rpx;
+}

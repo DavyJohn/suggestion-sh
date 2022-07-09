@@ -47,6 +47,7 @@ Page({
               'content-type': 'application/json'
             },
             success: function (res) {
+              console.log(res)
                 that.setData({
                 suggestions: res.data
               })

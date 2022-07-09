@@ -9,13 +9,11 @@ App({
     // 登录
     wx.login({
         success: (res) => {
+          console.log(res.code)
           wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session',
+            url:  app.globalData.baseUrl+ 'api/weixin/openid',
             data: {
-              appid: 'wx11ca4869e1818b99',
-              secret: '66e180e158e0586b0cd7d4b5bc167c3e',
               js_code: res.code,
-              grant_type: 'authorization_code'
             },
             method: 'GET',
             header: {
@@ -32,7 +30,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    baseUrl:'https://31p4663h68.oicp.vip'
-    // baseUrl:'http://127.0.0.1:8000'
+    // baseUrl:'https://31p4663h68.oicp.vip'
+    baseUrl:'https://www.suhangsugg.fun:8000'
   }
 })

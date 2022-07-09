@@ -10,6 +10,7 @@
             <text class="nickName">{{item.nickName ? item.nickName : '匿名'}}</text>
             <text class="description">{{item.description}}</text>
             <text class="time">{{item.createTime}}</text>
+            <view class="line"></view>
         </view>
     </view>
 </view>
