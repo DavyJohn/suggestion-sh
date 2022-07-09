@@ -9,9 +9,10 @@ App({
     // 登录
     wx.login({
         success: (res) => {
-          console.log(res.code)
+          // console.log('微信登录')
+          // console.log(this.globalData.baseUrl+ 'api/weixin/openid')
           wx.request({
-            url:  app.globalData.baseUrl+ 'api/weixin/openid',
+            url:  this.globalData.baseUrl+ 'api/weixin/openid',
             data: {
               js_code: res.code,
             },
@@ -31,6 +32,6 @@ App({
   globalData: {
     userInfo: null,
     // baseUrl:'https://31p4663h68.oicp.vip'
-    baseUrl:'https://www.suhangsugg.fun:8000'
+    baseUrl:'https://sugg.suhang.com.cn:8000'
   }
 })
