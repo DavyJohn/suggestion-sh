@@ -1,4 +1,5 @@
 const app = getApp()
+var utils = require('../../utils/util')
 Page({
 
   /**
@@ -20,8 +21,6 @@ Page({
   },
   //首次进入页面加载时触发
   onLoad() {
-    console.log('首次进入页面加载时触发')
-    
     // 判断用户是否授权，未授权时，向用户申请授权
     wx.getSetting({
       success: (res) => {
@@ -113,7 +112,9 @@ Page({
         'content-type': 'application/json'
       },
       success: (res) => {
-        console.log("获取title")
+               wx.showModal({
+          cancelColor: 'cancelColor',
+        })
         that.setData({
           indexTitle : res.data.content[0].description
         }),
@@ -125,7 +126,7 @@ Page({
 
       },
       fail:function(error){
-        console.log(error)
+        utils.showToasts(2,'网络开了小差')
       }
     })
   },
@@ -216,6 +217,9 @@ Page({
           duration: 1000,
           mask:true
         })
+      },
+      fail :(error) => {
+        utils.showToasts(2,'提交失败')
       }
     })
   }

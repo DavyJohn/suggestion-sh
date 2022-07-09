@@ -1,4 +1,5 @@
 const app = getApp()
+var utils = require('../../utils/util')
 Page({
 
     /**
@@ -47,10 +48,14 @@ Page({
               'content-type': 'application/json'
             },
             success: function (res) {
+              
               console.log(res)
                 that.setData({
                 suggestions: res.data
               })
+            },
+            fail :(error) =>{
+              utils.showToasts(2,'网络开了小差')
             }
           })
     }

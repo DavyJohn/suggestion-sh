@@ -1,4 +1,5 @@
 // app.js
+// var utils = require('../suggestion-sh/utils/util')
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -24,7 +25,15 @@ App({
               console.log(res)
               wx.setStorageSync('openid', res.data.openid)
               wx.setStorageSync('session_key', res.data.session_key)
-            }
+            },
+            // fail :(error) =>{
+            //   wx.showToast({
+            //     title: '网络开了小差',
+            //     icon:'error',
+            //     duration: 1000,
+            //     mask:true
+            //   })
+            // }
           })
         }
     })
