@@ -32,9 +32,6 @@ Page({
                 })
             }
         })
-
-        
-
         // 获取建议列表
         let openid = wx.getStorageSync('openid')
         let that = this
@@ -48,7 +45,6 @@ Page({
               'content-type': 'application/json'
             },
             success: function (res) {
-              
               console.log(res)
                 that.setData({
                 suggestions: res.data

@@ -40,7 +40,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    // baseUrl:'https://31p4663h68.oicp.vip'
+    // baseUrl:'https://31p4663h68.oicp.vip:8000' 
     baseUrl:'https://sugg.suhang.com.cn:8000'
   }
 })
