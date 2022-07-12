@@ -91,3 +91,16 @@ page {
     color: #767676;
     font-size: 24rpx;
 }
+
+.suggestions-images{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.suggestions-images image{
+  height: 200rpx;
+  width: 200rpx;
+  margin-left: 10rpx;
+
+}

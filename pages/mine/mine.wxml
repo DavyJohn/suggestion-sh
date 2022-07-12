@@ -9,6 +9,11 @@
         <view wx:for="{{suggestions}}" class="suggestion-item" wx:key="index">
             <text class="nickName">{{item.nickName ? item.nickName : '匿名'}}</text>
             <text class="description">{{item.description}}</text>
+            <view  class="suggestions-images" wx:if="{{item.files.length > 0}}" >
+              <block wx:for="{{item.files}}" wx:for-item="file">
+                <image mode="aspectFit" src="{{file}}" data-src="{{file}}" lazy-load="true" bindtap="preview"></image>
+              </block>
+            </view>
             <text class="time">{{item.createTime}}</text>
             <view class="line"></view>
         </view>

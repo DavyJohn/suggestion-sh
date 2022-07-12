@@ -16,8 +16,8 @@ Page({
     autoplay: false,
     interval: 2000,
     duration: 500,
-    
-    // nickName:''
+    nickName: '',
+    suggestion: ''
   },
   //首次进入页面加载时触发
   onLoad() {
@@ -61,15 +61,6 @@ Page({
         })
         
       }
-    //接收本地缓存的title 异步
-    // wx.getStorage({
-    //   key:'indexTitle',
-    //   success:(res) =>{
-    //     that.setData({
-    //       indexTitle:res.data
-    //     })
-    //   }
-    // }),
 
   },
   /**
@@ -82,6 +73,7 @@ Page({
     wx.chooseMedia({
       count: 8,
       sizeType: ['compressed'],
+      mediaType:['image'],
       success: res => {
         let tempFiles = res.tempFiles
         for (let i in tempFiles) {
@@ -112,9 +104,6 @@ Page({
         'content-type': 'application/json'
       },
       success: (res) => {
-               wx.showModal({
-          cancelColor: 'cancelColor',
-        })
         that.setData({
           indexTitle : res.data.content[0].description
         }),
@@ -216,6 +205,13 @@ Page({
           icon: 'success',
           duration: 1000,
           mask:true
+        })
+        this.setData({
+          localFilePaths: [],
+          serverFilePaths: [],
+          files: [], // 即将上传的文件列表
+          nickName: '',
+          suggestion: ''
         })
       },
       fail :(error) => {
