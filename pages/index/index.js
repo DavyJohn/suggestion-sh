@@ -49,18 +49,19 @@ Page({
   },
   onShow(){
     let that= this
-    let title= wx.getStorageSync('indexTitle')
+    this.getIndexTitle(that)
+    // let title= wx.getStorageSync('indexTitle')
       //接收本地缓存的title 同步
-      if(!title){
-        console.log('无本地数据')
-        this.getIndexTitle(that)
-      }else{
-        console.log('有本地数据数据')
-        that.setData({
-          indexTitle : title
-        })
+      // if(!title){
+      //   console.log('无本地数据')
         
-      }
+      // }else{
+      //   console.log('有本地数据数据')
+      //   that.setData({
+      //     indexTitle : title
+      //   })
+        
+      // }
 
   },
   /**
@@ -106,12 +107,12 @@ Page({
       success: (res) => {
         that.setData({
           indexTitle : res.data.content[0].description
-        }),
-                 //将输入加入本地缓存中
-        wx.setStorage({
-          key:'indexTitle',
-          data:that.data.indexTitle
         })
+                 //将输入加入本地缓存中
+        // wx.setStorage({
+        //   key:'indexTitle',
+        //   data:that.data.indexTitle
+        // })
 
       },
       fail:function(error){
